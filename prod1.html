@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>jQuery点击图片展开文字标题描述代码</title>
+
+		<script type="text/javascript" src="js/jquery.11.min.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+
+				//------------------------------------------鼠标点击图片	
+				$('#aaa').children('li').click(function() {
+
+					wz = $(this).css('left');
+					dq = $(this).index();
+
+					$(this).siblings(dq).fadeOut();
+					$(this).animate({
+						left: '0px'
+					}, 1000);
+
+					$(this).children('img').animate({
+						opacity: '1'
+					});
+					$(this).children('.aaays').css('display', 'none');
+					$('#dang').css('z-index', '999');
+
+					//------------------------------------------鼠标划出全部的时候	
+					$('#name').children('div').eq(dq).animate({
+						top: '0px'
+					}, 1000);
+				});
+
+				$('#nav').hover(function() {}, function() {
+					$('#nav').find('li').fadeIn();
+					$('#nav').find('li').eq(dq).animate({
+						left: wz
+					}, 1000);
+					$('#name').children('div').eq(dq).animate({
+						top: '-500px'
+					});
+					$('#dang').css('z-index', '0');
+				})
+
+				//------------------------------------------鼠标滑过透明
+
+				$('#aaa').children('li').hover(function() {
+					$(this).children('img').animate({
+						opacity: '0.5'
+					}, 500);
+					$(this).children('.aaays').css('display', 'block');
+				}, function() {
+					$(this).children('img').animate({
+						opacity: '1'
+					});
+					$(this).children('.aaays').css('display', 'none');
+				});
+
+			});
+		</script>
+
+		<style type="text/css">
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			
+			ul {
+				list-style: none;
+			}
+			
+			ul li {
+				float: left;
+				height: 300px;
+				background: #000;
+			}
+			
+			img {
+				border: 5px solid #01B7BD;
+			}
+			
+			#nav {
+				background: url(image/bj.jpg);
+				width: 1200px;
+				height: 300px;
+				cursor: pointer;
+				margin: 0 auto;
+				position: relative;
+				border: #EC8000 10px solid;
+				border-radius: 10px;
+			}
+			
+			.a1 {
+				position: absolute;
+				left: 0px;
+			}
+			
+			.a2 {
+				position: absolute;
+				left: 200px;
+			}
+			
+			.a3 {
+				position: absolute;
+				left: 400px;
+			}
+			
+			.a4 {
+				position: absolute;
+				left: 600px;
+			}
+			
+			.a5 {
+				position: absolute;
+				left: 800px;
+			}
+			
+			.a6 {
+				position: absolute;
+				left: 1000px;
+			}
+			
+			#name {
+				position: relative;
+			}
+			
+			.nr {
+				position: absolute;
+				left: 220px;
+				color: #FFF;
+				font-size: 30px;
+				padding-top: 50px;
+				top: -500px;
+			}
+			
+			.ys {
+				font-size: 18px;
+				padding-top: 10px;
+			}
+			
+			.aaays {
+				width: 200px;
+				height: 40px;
+				background: #000;
+				color: #FFF;
+				font-size: 25px;
+				text-align: center;
+				opacity: 0.7;
+				position: absolute;
+				top: 200px;
+				line-height: 40px;
+				display: none;
+			}
+			
+			#dang {
+				position: absolute;
+				left: 0px;
+				width: 200px;
+				height: 300px;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<br>
+		<div id="nav">
+			<div id="dang"></div>
+			<ul id="aaa">
+				<li class="a1"><img src="image/1.jpg" width="195" height="295">
+					<div class="aaays">NO1.波昂</div>
+				</li>
+				<li class="a2"><img src="image/2.jpg" width="195" height="295">
+					<div class="aaays">NO2.爱克托</div>
+				</li>
+				<li class="a3"><img src="image/3.jpg" width="195" height="295">
+					<div class="aaays">NO3.兰德克纳</div>
+				</li>
+				<li class="a4"><img src="image/4.png" width="195" height="295">
+					<div class="aaays">NO4.拜霍马</div>
+				</li>
+				<li class="a5"><img src="image/5.jpg" width="195" height="295">
+					<div class="aaays">NO5.霍夫斯田</div>
+				</li>
+				<li class="a6"><img src="image/6.jpg" width="195" height="295">
+					<div class="aaays">NO6.维姆勒</div>
+				</li>
+			</ul>
+			<div id="name">
+				<div class="nr">
+					POÄNG 波昂
+					<div class="ys">（2015－2020）
+						<p>单人沙发/扶手椅, 诺瓦拉 深米色<br />
+							有多款靠垫可供选择，可轻松改变 POÄNG 波昂 沙发及整个客厅。 贴面弯桦木框架，非常结实耐用。 高靠背可更好地支撑颈部</p>
+					</div>
+				</div>
+				<div class="nr">
+					EKTORP 爱克托
+					<div class="ys">（2005－2020）
+						<p>摇椅, 桦木贴面, 西拉利德 深蓝色<br />
+							备受喜爱的 EKTORP 爱克托 座椅采用经典设计，搭配厚实舒适的靠垫。垫套易于更换，不妨额外再购买一两个垫套，根据心情或季节随意更换。
+						</p>
+					</div>
+				</div>
+				<div class="nr">
+					LANDSKRONA 兰德克纳
+					<div class="ys">（2016—2020）
+						<p>单人沙发/扶手椅, 哥兰, 邦斯塔 金棕/木头<br />
+							为你带来奢华享受。我们采用高弹泡沫填料保证舒适度，接触面采用头层牛皮，确保美观，其他地方则采用耐磨的人造革，降低成本。</p>
+					</div>
+				</div>
+				<div class="nr">
+					BYHOLMA 拜霍马
+					<div class="ys">（2005－2020）
+						<p>单人沙发/扶手椅, 灰色<br />
+						纯手工制成，独具特色，外形圆润、图案美丽精细。 天然纤维制成的家具重量虽轻，但坚固耐用。 椅子可叠放；不用时节 省空间。</p>
+					</div>
+				</div>
+				<div class="nr">
+					HAVSTEN 霍夫斯田
+					<div class="ys">（2005－2020）
+						<p>休闲椅，室内/户外, 米黄色<br />如果你喜欢它的外观，不妨亲自体验一下。宽敞的落座空间、蓬松的靠垫外加弹力网眼布料，令这款沙发极具舒适之感。无论在室内还是室外，利用这款沙发打造属于你自己的组合，坐在上面放松身心！</p>
+					</div>
+				</div>
+				<div class="nr">
+					VIMLE 维姆勒
+					<div class="ys">（2002－2020）
+						<p>贵妃椅, 刚纳瑞德 米黄色<br />VIMLE 维姆勒 沙发系列提供可随心组合的模块，助你为自己及家人打造定制沙发。随着家庭成员增多，你可以继续组合，扩展沙发。</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+
+</html>

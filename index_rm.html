@@ -1,0 +1,96 @@
+﻿<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>图文卡片左右滚动</title>
+
+		<link rel="stylesheet" href="css/style1.css" type="text/css" />
+
+	</head>
+
+	<body>
+
+		<div class="bodyCon08">
+			<!--学员-->
+			<div class="students">
+
+				<div id="four_flash">
+					<div class="flashBg">
+						<ul class="mobile">
+							<li>
+								<img src="img/indexer/梁志天.jpg" />
+								<dd>梁志天</dd>
+								<p>国际著名建筑、室内及产品设计师。以现代风格见称，善于将饶富亚洲文化及艺术的元素融入其设计中...</p>
+								<a href=""></a>
+							</li>
+							<li>
+								<img src="img/indexer/高文安.jpg" />
+								<dd>高文安</dd>
+								<p>古稀之年的高文安常常挂在嘴边的是未来十年的规划和构想，接下来他还要开展游学、“高文安设计漫谈”...</p>
+								<a href=""></a>
+							</li>
+							<li>
+								<img src="img/indexer/cyj.jpg" />
+								<dd>陈幼坚</dd>
+								<p>著名设计师，曾荣获香港乃至国际奖项400多个，在纽约、伦敦、东京等地名声大噪...</p>
+								<a href=""></a>
+							</li>
+							<li>
+								<img src="img/indexer/csh.jpg" />
+								<dd>陈绍华</dd>
+								<p>中国著名平面设计师，深圳市平面设计协会常务理事、深圳市室内设计师协会的高级顾问...</p>
+								<a href=""></a>
+							</li>
+							<li>
+								<img src="img/indexer/xxh.jpg" />
+								<dd>席晓辉</dd>
+								<p>2国际著名设计师，首位获得德意志联邦共和国国家设计奖的中国设计师...</p>
+								<a href=""></a>
+							</li>
+							<li>
+								<img src="img/indexer/ljg.jpg" />
+								<dd>梁建国</dd>
+								<p>获得了一个极佳的角度来描绘本土新兴贵族的生活。一直秉持一种态度，“帮客人解决问题”...</p>
+								<a href=""></a>
+							</li>
+						</ul>
+					</div>
+					<div class="but_left"><img src="images/qianxleft.png" /></div>
+					<div class="but_right"><img src="images/qianxr.png" /></div>
+				</div>
+
+			</div>
+		</div>
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+			//学员
+			var _index5 = 0;
+
+			$("#four_flash .but_right img").click(function() {
+				_index5++;
+				var len = $(".flashBg ul.mobile li").length;
+				if(_index5 + 5 > len) {
+					$("#four_flash .flashBg ul.mobile").stop().append($("ul.mobile").html());
+				}
+				$("#four_flash .flashBg ul.mobile").stop().animate({
+					left: -_index5 * 326
+				}, 1000);
+			});
+
+			$("#four_flash .but_left img").click(function() {
+				if(_index5 == 0) {
+					$("ul.mobile").prepend($("ul.mobile").html());
+					$("ul.mobile").css("left", "-1380px");
+					_index5 = 6
+				}
+				_index5--;
+				$("#four_flash .flashBg ul.mobile").stop().animate({
+					left: -_index5 * 326
+				}, 1000);
+			});
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>jQuery swiper横向时间轴滑块</title>
+
+		<!--swiper框架样式-->
+		<link rel="stylesheet" type="text/css" href="us2/css/swiper-3.4.2.min.css" />
+
+		<!--主要样式-->
+		<link rel="stylesheet" type="text/css" href="us2/css/style.css" />
+
+		<!--插件-->
+		<script src="us2/js/jquery.min.js"></script>
+		<script src="us2/js/swiper-3.4.2.jquery.min.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<div class="product-section product-features">
+			<div class="product-title">最新动态</div>
+			<div class="product-wrapper">
+				<div class="product-body swiper-container">
+					<ul class="features-slide swiper-wrapper">
+						<li class="features-item swiper-slide">
+							<h3>2019-01-30</h3>
+							<i></i>
+							<a class="features-info">
+								<p class="features-info-i"></p>
+								<p class="features-info-s">定制家居的设计实力发展趋势</p>
+							</a>
+						</li>
+						<li class="features-item swiper-slide">
+							<h3>2019-03-30</h3>
+							<i></i>
+							<a class="features-info">
+								<p class="features-info-i"></p>
+								<p class="features-info-s">天河CBD，坐享美式休闲生活 </p>
+							</a>
+						</li>
+						<li class="features-item swiper-slide">
+							<h3>2019-12-03</h3>
+							<i></i>
+							<a class="features-info">
+								<p class="features-info-i"></p>
+								<p class="features-info-s">朗联设计20年：格物至善，持之以新 </p>
+							</a>
+						</li>
+						<li class="features-item swiper-slide">
+							<h3>2020-1-1</h3>
+							<i></i>
+							<a class="features-info">
+								<p class="features-info-i"></p>
+								<p class="features-info-s">2019年进出口值分别为24.65万亿元。</p>
+							</a>
+						</li>
+						<li class="features-item swiper-slide">
+							<h3>2020-1-15</h3>
+							<i></i>
+							<a class="features-info">
+								<p class="features-info-i"></p>
+								<p class="features-info-s">B与C端销售的核心：品牌与产品力</p>
+							</a>
+						</li>
+						<li class="features-item swiper-slide dark">
+							<h3>即将上线</h3>
+							<i></i>
+							<a class="features-info">
+								<p class="features-info-i"></p>
+								<p class="features-info-s">智能家居产业园正式投产，全国布局多个智造工厂 </p>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!--左箭头-->
+				<div class="swiper-button-prev"></div>
+				<!--右箭头-->
+				<div class="swiper-button-next swiper-button-disabled"></div>
+			</div>
+		</div>
+
+		<!---调用方法-->
+		<script type="text/javascript">
+			$(function() {
+				var mySwiper = new Swiper(".swiper-container", {
+					slidesPerView: 4, //默认是显示4个
+					initialSlide: 999, //默认从第几个显示，999是为了让右边没有
+					spaceBetween: 0, //间距
+					speed: 1000, //速度
+					prevButton: ".swiper-button-prev", //左右按钮
+					nextButton: ".swiper-button-next"
+				})
+			})
+		</script>
+	</body>
+
+</html>

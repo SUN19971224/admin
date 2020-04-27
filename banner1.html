@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		
+		#box {
+			height: 600px;
+			position: relative;
+			overflow: hidden;
+		}
+		
+		#box .bannerBox {
+			width: 1920px;
+			height: 600px;
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			overflow: hidden;
+		}
+		
+		#box .scroll {
+			height: 600px;
+		}
+		
+		#box .scroll img {
+			float: left;
+		}
+		
+		#box .btn {
+			position: absolute;
+			top: 50%;
+			width: 100%;
+			transform: translateY(-50%);
+			display: flex;
+			justify-content: space-between;
+		}
+		
+		#box .left,
+		#box .right {
+			cursor: pointer;
+			top: 0;
+			width: 40px;
+			height: 80px;
+			background: black;
+			color: #fff;
+			font: 40px/80px arial;
+			text-align: center;
+		}
+		
+		#box .left {
+			margin-left: 300px;
+		}
+		
+		#box .right {
+			margin-right: 300px;
+		}
+		
+		#box .spanBox {
+			position: absolute;
+			left: 50%;
+			transform: translateX(-50%);
+			bottom: 5%;
+		}
+		
+		#box .active {
+			background: #f40;
+		}
+		
+		#box span {
+			width: 24px;
+			height: 24px;
+			background: white;
+			border: 2px solid black;
+			border-radius: 50%;
+			display: inline-block;
+			margin: 0 6px;
+		}
+	</style>
+
+	<body>
+		<div id="box">
+			<div class="bannerBox">
+				<div class="scroll">
+					<img src="img/indexer/bn3.png" alt="" />
+					<img src="img/indexer/bn1.png" alt="" />
+					<img src="img/indexer/bn2.png" alt="" />
+					
+				</div>
+			</div>
+			<div class="btn">
+				<div class="left">&lt;</div>
+				<div class="right">&gt;</div>
+			</div>
+			<div class="spanBox">
+				<span class="active"></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+
+	</body>
+	<script src="js/bn.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+		$(function() {
+			//初始化
+			var len = $('.scroll img').length;
+			
+			$(".scroll").width(1920 * len);
+			
+			$(".scroll").css('margin-left',"-1920px");
+			var n = 0;
+			
+			var timer=null;
+			
+			//点击右按钮
+			$(".right").click(function() {
+				n++;
+				if(n>len-1){
+					n=0;
+				}
+				//
+				
+				$(".scroll").stop(true,true).animate({marginLeft:-1920*2+"px"},1000,function(){
+					$(".scroll img:first").insertAfter($(".scroll img:last"));
+					$(".scroll").css('margin-left',"-1920px");
+					
+				})
+				$("span").removeClass().eq(n).addClass("active");
+			})
+			//点击左按钮
+			$(".left").click(function() {
+				n--;
+				if(n<0){
+					n=len-1;
+				}
+				$(".scroll").stop(true,true).animate({marginLeft:0+"px"},1000,function(){
+					
+					$(".scroll img:last").insertBefore($(".scroll img:first"));
+					$(".scroll").css('margin-left',"-1920px");
+					
+				})
+				
+				$("span").removeClass().eq(n).addClass("active");
+			})
+			//模拟时间
+			function auto(){
+				$(".right").trigger("click");
+			}
+			timer=setInterval(auto,2000);
+			
+			$('#box').hover(function(){
+				clearInterval(timer);
+			},function(){
+				timer=setInterval(auto,2000);
+			})
+//			$("span").mouseover(function(){
+//				$("span").removeClass();
+//				$(this).addClass("active")
+//				var index=$(this).index();
+//
+//				$('.scroll').stop(true,true).animate({marginLeft:-1920*index+"px"},1000)
+//	
+//			})
+			
+		})
+		/*$(function() {
+			var len = $('.scroll img').length;
+
+			var n = 0;
+
+			//alert(len);
+			$(".scroll").width(1920 * len);
+
+			//$(".scroll").css('left',"-1920px");
+
+			$(".right").click(function() {
+				n++;
+
+				$(".scroll").animate({
+					left: -1920 * n + "px"
+				}, 5000, function() {
+
+//					$(".scroll img:first").insertAfter($(".scroll img:last"))
+
+				});
+
+			})
+			$(".left").click(function() {
+				n--;
+
+				$(".scroll").animate({
+					left: -1920 * n + "px"
+				}, 5000, function() {
+					if('.scroll img'){
+						
+					
+//					$(".scroll img:first").insertAfter($(".scroll img:last"))
+}
+				});
+
+			})
+
+		})*/
+	</script>
+
+</html>
